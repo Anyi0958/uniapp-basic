@@ -2,6 +2,9 @@ import App from './App';
 import Vue from 'vue';
 import store from "./store";
 import i18n from "./lang";
+import utils from "@/common/utils";
+
+Vue.prototype.utils = utils
 
 // #ifdef MP-WEIXIN
 // 由于微信小程序的运行机制问题，需声明如下一行，H5和APP非必填

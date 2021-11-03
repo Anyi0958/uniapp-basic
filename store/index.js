@@ -5,9 +5,11 @@ import i18n from "@/lang";
 Vue.use(Vuex);
 
 let state = {
-	nickName:"anit",
-	lang:utils.getLang(), 
-	token:utils.getToken(), 
+	nickName:"anit", // 用户名
+	lang:utils.getLang(),  // 语言
+	token:utils.getToken(),  // token
+	version:"", // 版本
+	isUpdate:false, // 是否需要升级
 };
 
 let getters ={
@@ -17,6 +19,12 @@ let mutations = {
 	SET_LANG : (state,lang)=>{
 		state.lang = lang
 	},
+	
+	SET_VERSION : (state,params)=>{
+		state.version = params.version
+		state.isUpdate = params.isUpdate
+	},
+
 	
 	SET_TOKEN : (state,token)=>{
 		state.token = token
@@ -29,6 +37,11 @@ let actions = {
 		i18n.locale = lang;
 		commit('SET_LANG',lang);
 		utils.setLang(lang);
+	},
+	
+	// 切换语言
+	handleVersion({ commit }, version){
+		commit('SET_VERSION',version);
 	},
 	
 	// 用户登录
